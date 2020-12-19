@@ -1,11 +1,7 @@
-.numerator{
-    text-align: right;
-    align-self: flex-end;
+#display{
+    justify-content: flex-end;
 }
-#operand{
-    text-align: right;
-    align-self: flex-end;
-}
+
 .keyboard{
     display:flex;
     margin-bottom:8px;
@@ -16,8 +12,7 @@
     width: 380px;
     display: block;
     border-radius:8px;
-    border: 1px solid;
-    bordel-color: #abc6c2;
+    border: 1px solid #abc6c2;
     padding:8px;
     margin-top:20px;
     margin-left:auto;
