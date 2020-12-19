@@ -1,6 +1,43 @@
-
+.numerator{
+    text-align: right;
+    align-self: flex-end;
+}
+#operand{
+    text-align: right;
+    align-self: flex-end;
+}
 .keyboard{
     display:flex;
     margin-bottom:8px;
     text-align: center;
 }
+
+#calc {
+    width: 380px;
+    display: block;
+    border-radius:8px;
+    border: 1px solid;
+    bordel-color: #abc6c2;
+    padding:8px;
+    margin-top:20px;
+    margin-left:auto;
+    margin-right:auto;
+    background: #224662;
+}
+
+#display {
+    background: #bcbcbc;
+    padding: 8px;
+    margin: 16px 12px 10px 16px;
+}
+
+.btn {
+    width: 62px;
+    margin: 2px;
+}
+
+.keyboard{
+    text-align: center;
+    justify-content: center;
+}
+
