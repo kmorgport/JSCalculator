@@ -9,38 +9,36 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/7e8d8e29f4.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/calcStyle.css">
 </head>
 <body>
 <div class="container">
-    <div>
+    <div class="calculator">
         <div class="row">
-            <div class="col-5">numer</div>
-            <div class="col-2">op</div>
-            <div class="col-5">numer</div>
         </div>
         <div class="row">
-            <div class="col-3">1</div>
-            <div class="col-3">2</div>
-            <div class="col-3">3</div>
-            <div class="col-3">+</div>
+            <button type="button"  class="number btn btn-outline-primary">1</button>
+            <button type="button"  class="number btn btn-outline-primary">2</button>
+            <button type="button"  class="number btn btn-outline-primary">3</button>
+            <button type="button" id="add" class="btn btn-outline-primary">+</button>
         </div>
         <div class="row">
-            <div class="col-3">4</div>
-            <div class="col-3">5</div>
-            <div class="col-3">6</div>
-            <div class="col-3">-</div>
+            <button type="button" class="number btn btn-outline-primary">4</button>
+            <button type="button" class="number btn btn-outline-primary">5</button>
+            <button type="button" class="number btn btn-outline-primary">6</button>
+            <button type="button" id="subtract" class="btn btn-outline-primary">-</button>
         </div>
         <div class="row">
-            <div class="col-3">7</div>
-            <div class="col-3">8</div>
-            <div class="col-3">9</div>
-            <div class="col-3">*</div>
+            <button type="button" class="number btn btn-outline-primary">7</button>
+            <button type="button" class="number btn btn-outline-primary">8</button>
+            <button type="button" class="number btn btn-outline-primary">9</button>
+            <button type="button" id="multi" class="btn btn-outline-primary">*</button>
         </div>
         <div class="row">
-            <div class="col-3">C</div>
-            <div class="col-3">0</div>
-            <div class="col-3">=</div>
-            <div class="col-3">/</div>
+            <button type="button" id="clear" class="btn btn-outline-primary">C</button>
+            <button type="button" class="number btn btn-outline-primary">0</button>
+            <button type="button" id="equal" class="btn btn-outline-primary">=</button>
+            <button type="button" id="divide" class="btn btn-outline-primary">/</button>
         </div>
     </div>
 </div>
