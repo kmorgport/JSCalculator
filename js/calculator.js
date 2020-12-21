@@ -1,19 +1,24 @@
 "use strict"
 class Calculator{
+    //creates calculator object
     constructor(firstNumerDisplay, secondNumerDisplay){
         this.firstNumerDisplay = firstNumerDisplay
         this.secondNumerDisplay = secondNumerDisplay
+        //function to clear the calculator
         this.clear();
     }
 
     clear(){
+        //will set display and values to empty strings
         this.firstOperand = ''
         this.secondOperand = ''
         this.operation = undefined
     }
 
     appendNumber(number){
+        //prevents a period from being just a decimal, prevents more than one decimal
         if(number === '.' && this.firstOperand.includes('.'))return
+        //sets the calculator (this.) firstOperand to a string plus
         this.firstOperand = this.firstOperand.toString() + number.toString()
     }
 
