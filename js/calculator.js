@@ -22,6 +22,25 @@ class Calculator{
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
         let integerDisplay
+        if(isNaN(integerDigits)){
+            integerDisplay = ''
+        } else{
+            integerDisplay = integerDigits.toLocaleString('en',{maximumFractionDigits: 0})
+        }
+        if(decimalDigits != null){
+            return `${integerDisplay}.${decimalDigits}`
+        }else{
+            return integerDisplay
+        }
+    }
+
+    updateDisplay(){
+        this.firstNumerDisplay.innerText = this.getDisplayNumber(this.firstOperand)
+        if (this.operation  != null){
+            this.secondNumerDisplay.innerText = `${this.getDisplayNumber(this.secondOperand)} ${this.operation}`
+        } else{
+            this.secondNumerDisplay.innerText = ''
+        }
     }
 }
 
