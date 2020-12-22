@@ -111,8 +111,13 @@ operation.forEach(button=>{
     })
 })
 
-equals.addEventListener('click', button=>{
+equals.addEventListener('click', ()=>{
     calculator.compute()
+    calculator.updateDisplay()
+})
+
+clear.addEventListener('click', ()=>{
+    calculator.clear()
     calculator.updateDisplay()
 })
 
