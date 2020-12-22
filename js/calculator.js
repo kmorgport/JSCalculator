@@ -1,6 +1,7 @@
 "use strict"
 class Calculator{
     //creates calculator object
+    //firstNumerDisplay, SecondNumerDisplay allow the button values to appear in the actual display
     constructor(firstNumerDisplay, secondNumerDisplay){
         this.firstNumerDisplay = firstNumerDisplay
         this.secondNumerDisplay = secondNumerDisplay
@@ -14,29 +15,38 @@ class Calculator{
         this.secondOperand = ''
         this.operation = undefined
     }
-
+    //the (number) will be the value of the key you strike
     appendNumber(number){
         //prevents a period from being just a decimal, prevents more than one decimal
         if(number === '.' && this.secondOperand.includes('.'))return
-        //sets the calculator (this.) firstOperand to a string plus
+        //sets the calculator (this.) secondOperand to a string plus number
         this.secondOperand = this.secondOperand.toString() + number.toString()
     }
-
+    //operation is the value of operation key
     chooseOperation(operation){
+        //if leftmost number is empty end function
         if(this.secondOperand === '')return
+        //if rightmost number is not empty, run computation
         if(this.firstOperand !== ''){
             this.compute()
         }
+        //calculator's operation = the value of the operator key value
         this.operation = operation
+        //the leftmost display becomes the value of the rightmost display
         this.firstOperand = this.secondOperand
+        //the right most display becomes an empty string (so a new number may be input)
         this.secondOperand =  ''
     }
 
     compute(){
         let computation
+        //leftmost value of the left most number is parsed and put into a variable
         const prev = parseFloat(this.firstOperand)
+        //right most value is parsed and stored
         const current = parseFloat(this.secondOperand)
+        //checks to ensure both are numbers or just returns
         if (isNaN(prev)||isNaN(current))return
+        //its.....its just some math.....
         switch (this.operation){
             case '+':
                 computation = prev+current
@@ -53,12 +63,16 @@ class Calculator{
             default:
                 break
         }
+        //right most value becomes the number you just computed (so it can be displayed)
         this.secondOperand = computation
+        //the calculator.operation property is set to undefined
         this.operation = undefined
+        //the leftmost value is set to an empty string
         this.firstOperand = ''
     }
-
+    //the work horse function (imo)
     getDisplayNumber(number){
+        //stores the value your button passes
         const stringNumber = number.toString()
         const integerDigits = parseFloat(stringNumber.split('.')[0])
         const decimalDigits = stringNumber.split('.')[1]
@@ -93,7 +107,6 @@ const clear = document.querySelector('[data-clear]');
 const equals = document.querySelector('[data-equals]');
 const firstNumerDisplay = document.querySelector('[data-first-number]');
 const secondNumerDisplay = document.querySelector('[data-second-number]');
-const operandisplay = document.querySelector('[data-display-oper]');
 
 const calculator = new Calculator(firstNumerDisplay,secondNumerDisplay);
 
