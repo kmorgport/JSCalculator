@@ -38,6 +38,30 @@ class Calculator{
         this.secondOperand =  ''
     }
 
+    chooseTrig(button){
+        let trigonometry
+        const pi = Math.PI
+        this.trigsign = button
+        const theta = this.secondOperand
+        if(isNaN(theta))return
+        switch(this.trigsign){
+            case 'sin':
+                trigonometry = ((Math.sin(theta)) * (180/pi))
+                break
+            case 'cos':
+                trigonometry = ((Math.cos(theta)) * (180/pi))
+                break
+            case 'tan':
+                trigonometry = ((Math.tan(theta)) * (180/pi))
+                break
+            default:
+                break
+        }
+        this.secondOperand = trigonometry
+        this.trigsign = ''
+        this.firstOperand = ''
+    }
+
     compute(){
         let computation
         //leftmost value of the left most number is parsed and put into a variable
@@ -107,8 +131,17 @@ const clear = document.querySelector('[data-clear]');
 const equals = document.querySelector('[data-equals]');
 const firstNumerDisplay = document.querySelector('[data-first-number]');
 const secondNumerDisplay = document.querySelector('[data-second-number]');
+const trig = document.querySelectorAll('[data-trig]')
 
 const calculator = new Calculator(firstNumerDisplay,secondNumerDisplay);
+
+trig.forEach(button=>{
+    button.addEventListener('click', ()=>{
+        calculator.chooseTrig(button.innerText)
+        calculator.updateDisplay()
+    })
+
+})
 
 number.forEach(button=>{
     button.addEventListener('click',()=>{
