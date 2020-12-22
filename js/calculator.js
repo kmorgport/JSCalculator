@@ -17,9 +17,45 @@ class Calculator{
 
     appendNumber(number){
         //prevents a period from being just a decimal, prevents more than one decimal
-        if(number === '.' && this.firstOperand.includes('.'))return
+        if(number === '.' && this.secondOperand.includes('.'))return
         //sets the calculator (this.) firstOperand to a string plus
-        this.firstOperand = this.firstOperand.toString() + number.toString()
+        this.secondOperand = this.secondOperand.toString() + number.toString()
+    }
+
+    chooseOperation(operation){
+        if(this.secondOperand === '')return
+        if(this.firstOperand !== ''){
+            this.compute()
+        }
+        this.operation = operation
+        this.firstOperand = this.secondOperand
+        this.secondOperand =  ''
+    }
+
+    compute(){
+        let computation
+        const prev = parseFloat(this.firstOperand)
+        const current = parseFloat(this.secondOperand)
+        if (isNaN(prev)||isNaN(current))return
+        switch (this.operation){
+            case '+':
+                computation = prev+current
+                break
+            case '-':
+                computation = prev-current
+                break
+            case '*':
+                computation = prev*current
+                break
+            case '/':
+                computation = prev/current
+                break
+            default:
+                break
+        }
+        this.secondOperand = computation
+        this.operation = undefined
+        this.firstOperand = ''
     }
 
     getDisplayNumber(number){
@@ -40,11 +76,11 @@ class Calculator{
     }
 
     updateDisplay(){
-        this.firstNumerDisplay.innerText = this.getDisplayNumber(this.firstOperand)
+        this.secondNumerDisplay.innerText = this.getDisplayNumber(this.secondOperand)
         if (this.operation  != null){
-            this.secondNumerDisplay.innerText = `${this.getDisplayNumber(this.secondOperand)} ${this.operation}`
+            this.firstNumerDisplay.innerText = `${this.getDisplayNumber(this.firstOperand)} ${this.operation}`
         } else{
-            this.secondNumerDisplay.innerText = ''
+            this.firstNumerDisplay.innerText = ''
         }
     }
 }
@@ -68,6 +104,17 @@ number.forEach(button=>{
     })
 })
 
+operation.forEach(button=>{
+    button.addEventListener('click',()=>{
+        calculator.chooseOperation(button.innerText)
+        calculator.updateDisplay()
+    })
+})
+
+equals.addEventListener('click', button=>{
+    calculator.compute()
+    calculator.updateDisplay()
+})
 
 
 // number.forEach(button=>{
