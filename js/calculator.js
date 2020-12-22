@@ -38,6 +38,29 @@ class Calculator{
         this.secondOperand =  ''
     }
 
+    doAlgebra(button){
+        let algebra
+        const pi = Math.PI
+        this.power = button
+        const x = this.secondOperand
+        if(isNaN(x))return
+        switch(this.power){
+            case 'x2':
+                algebra = x**2
+                break
+            case 'x3':
+                algebra = x**3
+                break
+            case 'sqrt':
+                algebra = Math.sqrt(x)
+                break
+            default:
+                break
+        }
+        this.secondOperand = algebra
+        this.power = ''
+        this.firstOperand = ''
+    }
     chooseTrig(button){
         let trigonometry
         const pi = Math.PI
@@ -132,9 +155,18 @@ const equals = document.querySelector('[data-equals]');
 const firstNumerDisplay = document.querySelector('[data-first-number]');
 const secondNumerDisplay = document.querySelector('[data-second-number]');
 const trig = document.querySelectorAll('[data-trig]')
+const algebra = document.querySelectorAll('[data-algebra]')
+const negative = document.querySelector('[data-negative]')
 
 const calculator = new Calculator(firstNumerDisplay,secondNumerDisplay);
 
+
+algebra.forEach(button =>{
+    button.addEventListener('click',()=>{
+        calculator.doAlgebra(button.innerText)
+        calculator.updateDisplay()
+    })
+})
 trig.forEach(button=>{
     button.addEventListener('click', ()=>{
         calculator.chooseTrig(button.innerText)
